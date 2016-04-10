@@ -10,6 +10,7 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
+            System.Console.WriteLine("Hello C#");
         }
     }
 }
