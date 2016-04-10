@@ -8,17 +8,38 @@ namespace BasedLearning
 {
     class Program
     {
-        enum AMOR_TYPE
-        {
-            yellow = 10,
-            red = 30
-        }
-
         static void Main(string[] args)
         {
-            const double PI = 3.1415926535897;
+            TestMod2();
+            TestMod2();
+            TestMod2();
+            TestMod2();
+            TestMod2();
+        }
 
-            System.Console.WriteLine("ENUM::AMOR : {0}, {1}", AMOR_TYPE.yellow, AMOR_TYPE.red);
+        public void TestMod1()
+        {
+            Random rnd = new Random();
+            int result = rnd.Next() % 100;
+            if (60 <= result)
+            {
+                //ActionKick();
+            }
+        }
+
+        static private Random _rnd = new Random();
+        static public void TestMod2()
+        {
+            int data = _rnd.Next();
+            int result = data % 2;
+            if (0 == result)
+            {
+                System.Console.WriteLine("{0}은 2의 배수입니다.", data);
+            }
+            else
+            {
+                System.Console.WriteLine("{0}은 2의 배수가 아닙니다.", data);
+            }
         }
     }
 }
