@@ -10,19 +10,28 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            float PI = 3.141593F;
-            int PI2 = (int)PI;
+            string text = "텍스트";
+            int data = 1234;
+            text += data.ToString();
+            System.Console.WriteLine(text);
 
-            //System.Console.WriteLine("PI = " + PI);
-            //System.Console.WriteLine("PI2 = " + PI2);
+            int data2 = 5678;
+            text += Convert.ToString(data2);
+            System.Console.WriteLine(text);
 
-            int PI3 = 5;
+            string numString = "1234";
+            int number = Convert.ToInt32(numString);
+            System.Console.WriteLine(number);
 
-            PI = PI3;
-            System.Console.WriteLine("PI = {0}", PI);
-
-            //PI3 = PI;//에러 난다
-            //System.Console.WriteLine("PI3 = {0}", PI3);
+            try
+            {
+                string text2 = "123AAA4";
+                int number2 = Convert.ToInt32(text2);
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
         }
     }
 }
