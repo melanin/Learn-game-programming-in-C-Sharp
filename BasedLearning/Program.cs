@@ -8,30 +8,17 @@ namespace BasedLearning
 {
     class Program
     {
+        enum AMOR_TYPE
+        {
+            yellow = 10,
+            red = 30
+        }
+
         static void Main(string[] args)
         {
-            string text = "텍스트";
-            int data = 1234;
-            text += data.ToString();
-            System.Console.WriteLine(text);
+            const double PI = 3.1415926535897;
 
-            int data2 = 5678;
-            text += Convert.ToString(data2);
-            System.Console.WriteLine(text);
-
-            string numString = "1234";
-            int number = Convert.ToInt32(numString);
-            System.Console.WriteLine(number);
-
-            try
-            {
-                string text2 = "123AAA4";
-                int number2 = Convert.ToInt32(text2);
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e.Message);
-            }
+            System.Console.WriteLine("ENUM::AMOR : {0}, {1}", AMOR_TYPE.yellow, AMOR_TYPE.red);
         }
     }
 }
