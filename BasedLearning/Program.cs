@@ -10,7 +10,23 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            AndGate();
+            //AndGate();
+            OrGate();
+        }
+
+        static void OrGate()
+        {
+            byte age = 128;//10000000
+            byte bitVar = 1;//00000001
+
+            byte ret = (byte)(age | bitVar);
+            /*******
+             10000000
+             00000001
+            |--------
+             10000001
+            *///////
+            System.Console.WriteLine(ret);
         }
 
         static void AndGate()
