@@ -11,7 +11,16 @@ namespace BasedLearning
         static void Main(string[] args)
         {
             //AndGate();
-            OrGate();
+            //OrGate();
+            Complement();
+        }
+
+        static void Complement()
+        {
+            byte age = 38;//00100110
+            byte bitVar = (byte)~age;//11011001
+            System.Console.WriteLine(age);
+            System.Console.WriteLine(bitVar);
         }
 
         static void OrGate()
