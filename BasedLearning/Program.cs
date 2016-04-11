@@ -10,36 +10,35 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            TestMod2();
-            TestMod2();
-            TestMod2();
-            TestMod2();
-            TestMod2();
+            AndGate();
         }
 
-        public void TestMod1()
+        static void AndGate()
         {
-            Random rnd = new Random();
-            int result = rnd.Next() % 100;
-            if (60 <= result)
-            {
-                //ActionKick();
-            }
-        }
+            byte age = 4;//00000100
+            byte bitVar = 1;//00000001
+            bitVar <<= 2;//00000001 -> 00000100
 
-        static private Random _rnd = new Random();
-        static public void TestMod2()
-        {
-            int data = _rnd.Next();
-            int result = data % 2;
-            if (0 == result)
-            {
-                System.Console.WriteLine("{0}은 2의 배수입니다.", data);
-            }
-            else
-            {
-                System.Console.WriteLine("{0}은 2의 배수가 아닙니다.", data);
-            }
+            System.Console.WriteLine(age & bitVar);
+            /*******
+             00000100
+             00000100
+            &--------
+             00000100
+            *///////
+            System.Console.WriteLine(bitVar);
+
+            bitVar = 1;//00000001
+            bitVar <<= 3;//00000001 -> 00001000
+
+            System.Console.WriteLine(age & bitVar);
+            /*******
+             00000100
+             00001000
+            &--------
+             00000000
+            *///////
+            System.Console.WriteLine(bitVar);
         }
     }
 }
