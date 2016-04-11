@@ -12,7 +12,22 @@ namespace BasedLearning
         {
             //AndGate();
             //OrGate();
-            Complement();
+            //Complement();
+            XORGate();
+        }
+
+        static void XORGate()
+        {
+            byte var1 = 8;//00001000
+            byte var2 = 107;//01101011
+
+            System.Console.WriteLine(var1 ^ var2);
+            /*******
+             00001000
+             01101011
+            ^--------
+             01100011
+            *///////
         }
 
         static void Complement()
