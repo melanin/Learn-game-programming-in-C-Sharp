@@ -10,75 +10,20 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            //AndGate();
-            //OrGate();
-            //Complement();
-            XORGate();
-        }
+            int var1 = 100;
+jmp_here:
 
-        static void XORGate()
-        {
-            byte var1 = 8;//00001000
-            byte var2 = 107;//01101011
-
-            System.Console.WriteLine(var1 ^ var2);
-            /*******
-             00001000
-             01101011
-            ^--------
-             01100011
-            *///////
-        }
-
-        static void Complement()
-        {
-            byte age = 38;//00100110
-            byte bitVar = (byte)~age;//11011001
-            System.Console.WriteLine(age);
-            System.Console.WriteLine(bitVar);
-        }
-
-        static void OrGate()
-        {
-            byte age = 128;//10000000
-            byte bitVar = 1;//00000001
-
-            byte ret = (byte)(age | bitVar);
-            /*******
-             10000000
-             00000001
-            |--------
-             10000001
-            *///////
-            System.Console.WriteLine(ret);
-        }
-
-        static void AndGate()
-        {
-            byte age = 4;//00000100
-            byte bitVar = 1;//00000001
-            bitVar <<= 2;//00000001 -> 00000100
-
-            System.Console.WriteLine(age & bitVar);
-            /*******
-             00000100
-             00000100
-            &--------
-             00000100
-            *///////
-            System.Console.WriteLine(bitVar);
-
-            bitVar = 1;//00000001
-            bitVar <<= 3;//00000001 -> 00001000
-
-            System.Console.WriteLine(age & bitVar);
-            /*******
-             00000100
-             00001000
-            &--------
-             00000000
-            *///////
-            System.Console.WriteLine(bitVar);
+            if(var1 == 100)
+            {
+                System.Console.WriteLine("a는 100이요.");
+                var1 = 200;
+                goto jmp_here;
+            }
+            else
+            {
+                System.Console.WriteLine("실행 안됨");
+                System.Console.WriteLine("a는 100이 아니요");
+            }
         }
     }
 }
