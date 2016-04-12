@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BasedLearning
 {
@@ -10,19 +11,12 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            int var1 = 100;
-jmp_here:
+            DirectoryInfo directoryInfo = new DirectoryInfo(Directory.GetCurrentDirectory());
+            FileInfo[] fileInfos = directoryInfo.GetFiles();
 
-            if(var1 == 100)
+            foreach(FileInfo info in fileInfos)
             {
-                System.Console.WriteLine("a는 100이요.");
-                var1 = 200;
-                goto jmp_here;
-            }
-            else
-            {
-                System.Console.WriteLine("실행 안됨");
-                System.Console.WriteLine("a는 100이 아니요");
+                System.Console.WriteLine(info.Name);
             }
         }
     }
