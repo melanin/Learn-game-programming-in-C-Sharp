@@ -11,7 +11,17 @@ namespace BasedLearning
     {
         private string _name;
         private int _level;
-        private int _energy;
+        private int _energy = 100;
+
+        public Character()
+        {
+        }
+        public Character(string __name, int __level, int __energy)
+        {
+            _name = __name;
+            _level = __level;
+            _energy = __energy;
+        }
 
         public void SetName(string __name)
         {
@@ -57,6 +67,8 @@ namespace BasedLearning
             PrintName();
             PrintLevel();
             PrintEnergy();
+
+            System.Console.WriteLine();
         }
     }
 
@@ -64,22 +76,13 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            Character knight = new Character();
-            knight.SetName("기사");
-            knight.SetLevel(1);
-            knight.SetEnergy(10);
+            Character knight = new Character("기사님", 2, 100);
+            Character mage = new Character("메이지", 5, 50);
+            Character ranger = new Character("레인저", 1, 10);
+
             knight.PrintAllInformation();
-
-            System.Console.WriteLine();
-
-            Character wizard = new Character();
-            wizard.SetName("마법사");
-            wizard.SetLevel(2);
-            wizard.SetEnergy(5);
-            //wizard.PrintName();
-            //wizard.PrintLevel();
-            //wizard.PrintEnergy();
-            wizard.PrintAllInformation();
+            mage.PrintAllInformation();
+            ranger.PrintAllInformation();
         }
     }
 }
