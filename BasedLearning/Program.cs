@@ -18,61 +18,61 @@ namespace BasedLearning
         }
         public Character(string __name, int __level, int __energy)
         {
-            _name = __name;
-            _level = __level;
-            _energy = __energy;
+            this._name = __name;
+            this._level = __level;
+            this._energy = __energy;
         }
         public Character(Character __source)
         {
-            _name = __source._name;
-            _level = __source._level;
-            _energy = __source._energy;
+            this._name = __source._name;
+            this._level = __source._level;
+            this._energy = __source._energy;
         }
 
         public void SetName(string __name)
         {
-            _name = __name;
+            this._name = __name;
         }
         public void SetLevel(int __level)
         {
-            _level = __level;
+            this._level = __level;
         }
         public void SetEnergy(int __energy)
         {
-            _energy = __energy;
+            this._energy = __energy;
         }
 
         public string GetName()
         {
-            return _name;
+            return this._name;
         }
         public int GetLevel()
         {
-            return _level;
+            return this._level;
         }
         public int GetEnergy()
         {
-            return _energy;
+            return this._energy;
         }
 
         public void PrintName()
         {
-            System.Console.WriteLine("이름: {0}", _name);
+            System.Console.WriteLine("이름: {0}", this._name);
         }
         public void PrintLevel()
         {
-            System.Console.WriteLine("레벨: {0}", _level);
+            System.Console.WriteLine("레벨: {0}", this._level);
         }
         public void PrintEnergy()
         {
-            System.Console.WriteLine("에너지: {0}", _energy);
+            System.Console.WriteLine("에너지: {0}", this._energy);
         }
 
         public void PrintAllInformation()
         {
-            PrintName();
-            PrintLevel();
-            PrintEnergy();
+            this.PrintName();
+            this.PrintLevel();
+            this.PrintEnergy();
 
             System.Console.WriteLine();
         }
