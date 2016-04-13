@@ -22,6 +22,12 @@ namespace BasedLearning
             _level = __level;
             _energy = __energy;
         }
+        public Character(Character __source)
+        {
+            _name = __source._name;
+            _level = __source._level;
+            _energy = __source._energy;
+        }
 
         public void SetName(string __name)
         {
@@ -76,13 +82,13 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            Character knight = new Character("기사님", 2, 100);
-            Character mage = new Character("메이지", 5, 50);
-            Character ranger = new Character("레인저", 1, 10);
+            Character knight = new Character("기사", 2, 100);
+            Character clone = new Character(knight);
+            clone.SetLevel(1);
+            clone.SetEnergy(10);
 
             knight.PrintAllInformation();
-            mage.PrintAllInformation();
-            ranger.PrintAllInformation();
+            clone.PrintAllInformation();
         }
     }
 }
