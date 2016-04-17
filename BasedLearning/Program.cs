@@ -7,88 +7,62 @@ using System.IO;
 
 namespace BasedLearning
 {
-    public class Character
-    {
-        private string _name;
-        private int _level;
-        private int _energy = 100;
-
-        public Character()
-        {
-        }
-        public Character(string __name, int __level, int __energy)
-        {
-            this._name = __name;
-            this._level = __level;
-            this._energy = __energy;
-        }
-        public Character(Character __source)
-        {
-            this._name = __source._name;
-            this._level = __source._level;
-            this._energy = __source._energy;
-        }
-
-        public void SetName(string __name)
-        {
-            this._name = __name;
-        }
-        public void SetLevel(int __level)
-        {
-            this._level = __level;
-        }
-        public void SetEnergy(int __energy)
-        {
-            this._energy = __energy;
-        }
-
-        public string GetName()
-        {
-            return this._name;
-        }
-        public int GetLevel()
-        {
-            return this._level;
-        }
-        public int GetEnergy()
-        {
-            return this._energy;
-        }
-
-        public void PrintName()
-        {
-            System.Console.WriteLine("이름: {0}", this._name);
-        }
-        public void PrintLevel()
-        {
-            System.Console.WriteLine("레벨: {0}", this._level);
-        }
-        public void PrintEnergy()
-        {
-            System.Console.WriteLine("에너지: {0}", this._energy);
-        }
-
-        public void PrintAllInformation()
-        {
-            this.PrintName();
-            this.PrintLevel();
-            this.PrintEnergy();
-
-            System.Console.WriteLine();
-        }
-    }
-
     class Program
     {
+        public const int ConstVar = 10;
+        public readonly int ROvar1;//초기화하지 않아도 된다
+        public readonly int ROvar2 = 1000;
+        public readonly int ROvar3;
+        public readonly int ROvar4;
+
+        public Program()
+        {
+            //ConstVar = 20;//const 상수값 재정의 실패
+
+            {//readonly값은 생성자에서만 값 대입 가능
+                ROvar2 = 2000;//선언부에서 초기화 했어도 생성자 내에서는 변경 가능
+                ROvar3 = 20000;
+            }
+        }
+
+        public Program(int __type)
+        {
+            if (0 == __type)
+            {
+                ROvar4 = 30000;
+            }
+            else
+            {
+                ROvar4 = 40000;
+            }
+        }
+
         static void Main(string[] args)
         {
-            Character knight = new Character("기사", 2, 100);
-            Character clone = new Character(knight);
-            clone.SetLevel(1);
-            clone.SetEnergy(10);
+            Program obj = new Program();
 
-            knight.PrintAllInformation();
-            clone.PrintAllInformation();
+            {//초기화 되지않은 값은 0으로 출력
+                System.Console.WriteLine(obj.ROvar1);
+                System.Console.WriteLine(obj.ROvar4);
+            }
+
+            System.Console.WriteLine(obj.ROvar2);
+            System.Console.WriteLine(obj.ROvar3);
+
+            {//생성자에서 인자값으로 다른 값 설정의 예
+                Program obj2 = new Program(0);
+                System.Console.WriteLine(obj2.ROvar4);
+
+                Program obj3 = new Program(1);
+                System.Console.WriteLine(obj3.ROvar4);
+            }
+
+            {//readonly 값 변경 불가
+                //ROvar1 = 500;
+                //ROvar2 = 3000;
+                //ROvar3 = 50000;
+                //ROvar4 = 500000;
+            }
         }
     }
 }
