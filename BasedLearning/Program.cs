@@ -7,62 +7,36 @@ using System.IO;
 
 namespace BasedLearning
 {
+    class Monster
+    {
+        public string _name;
+        public int _energy;
+        public static int _count;//객체가 같은 값을 공유
+
+        public Monster()
+        {
+            _count++;
+        }
+    }
+
     class Program
     {
-        public const int ConstVar = 10;
-        public readonly int ROvar1;//초기화하지 않아도 된다
-        public readonly int ROvar2 = 1000;
-        public readonly int ROvar3;
-        public readonly int ROvar4;
-
-        public Program()
-        {
-            //ConstVar = 20;//const 상수값 재정의 실패
-
-            {//readonly값은 생성자에서만 값 대입 가능
-                ROvar2 = 2000;//선언부에서 초기화 했어도 생성자 내에서는 변경 가능
-                ROvar3 = 20000;
-            }
-        }
-
-        public Program(int __type)
-        {
-            if (0 == __type)
-            {
-                ROvar4 = 30000;
-            }
-            else
-            {
-                ROvar4 = 40000;
-            }
-        }
-
         static void Main(string[] args)
         {
-            Program obj = new Program();
+            Monster mob1 = new Monster();
+            mob1._name = "고블린";
+            mob1._energy = 10;
 
-            {//초기화 되지않은 값은 0으로 출력
-                System.Console.WriteLine(obj.ROvar1);
-                System.Console.WriteLine(obj.ROvar4);
-            }
+            Monster mob2 = new Monster();
+            mob2._name = "오우거";
+            mob2._energy = 20;
 
-            System.Console.WriteLine(obj.ROvar2);
-            System.Console.WriteLine(obj.ROvar3);
+            //System.Console.WriteLine("총 몬스터 개수: {0}", mob1._count);//static 멤버는 객체로부터 접근 불가
+            //Monster._count += 2;//static 멤버는 클래스 자체를 통해서 접근 가능.. 생성자에서 자동 카운트 중
+            System.Console.WriteLine("총 몬스터 개수: {0}", Monster._count);
 
-            {//생성자에서 인자값으로 다른 값 설정의 예
-                Program obj2 = new Program(0);
-                System.Console.WriteLine(obj2.ROvar4);
-
-                Program obj3 = new Program(1);
-                System.Console.WriteLine(obj3.ROvar4);
-            }
-
-            {//readonly 값 변경 불가
-                //ROvar1 = 500;
-                //ROvar2 = 3000;
-                //ROvar3 = 50000;
-                //ROvar4 = 500000;
-            }
+            System.Console.WriteLine("이름: {0}, 에너지: {1}", mob1._name, mob1._energy);
+            System.Console.WriteLine("이름: {0}, 에너지: {1}", mob2._name, mob2._energy);
         }
     }
 }
