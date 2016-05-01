@@ -7,36 +7,40 @@ using System.IO;
 
 namespace BasedLearning
 {
-    class Monster
+    struct Data
     {
-        public string _name;
-        public int _energy;
-        public static int _count;//객체가 같은 값을 공유
+        public int a;
+        public int b;
+        public int c;       
+    }
 
-        public Monster()
-        {
-            _count++;
-        }
+    struct Data2 //: Data
+    {//상속 불가
+        public int d;
+        //public int e = 10;//초기자 불가
+
+        //public Data2() {}
+        //생성자 사용 불가
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Monster mob1 = new Monster();
-            mob1._name = "고블린";
-            mob1._energy = 10;
+            Data data;
+            data.a = 10;
+            data.b = 20;
+            data.c = 30;
 
-            Monster mob2 = new Monster();
-            mob2._name = "오우거";
-            mob2._energy = 20;
+            System.Console.WriteLine(data.a);
+            System.Console.WriteLine(data.b);
+            System.Console.WriteLine(data.c);
 
-            //System.Console.WriteLine("총 몬스터 개수: {0}", mob1._count);//static 멤버는 객체로부터 접근 불가
-            //Monster._count += 2;//static 멤버는 클래스 자체를 통해서 접근 가능.. 생성자에서 자동 카운트 중
-            System.Console.WriteLine("총 몬스터 개수: {0}", Monster._count);
+            Data2 data2;
+            //System.Console.WriteLine(data2.d);//초기화 되지 않은 변수는 사용 불가
 
-            System.Console.WriteLine("이름: {0}, 에너지: {1}", mob1._name, mob1._energy);
-            System.Console.WriteLine("이름: {0}, 에너지: {1}", mob2._name, mob2._energy);
+            Data2 data2_1 = new Data2();
+            System.Console.WriteLine(data2_1.d);//new를 이용해서 생성한 객체는 내부의 기본 생성자에 의해 0으로 자동 초기화
         }
     }
 }
