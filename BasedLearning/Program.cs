@@ -2,93 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections;
-using System.Threading;
 
 namespace BasedLearning
 {
-    class DefenseMachine
+    class Animal
     {
-        private string _name;
+    }
 
-        public DefenseMachine(string __name)
+    class Person : Animal
+    {
+        //private string _name;//private는 상속받은 클래스도 접근 불가
+        protected string _name;//protected는 상속받은 클래스만 접근 가능
+        protected int _eye;
+        protected int _ear;
+        protected int _mouth;
+        protected int _nose;
+
+        public void Print()
+        {
+            System.Console.WriteLine("name is {0}", _name);
+            System.Console.WriteLine("eye is {0}", _eye);
+            System.Console.WriteLine("ear is {0}", _ear);
+            System.Console.WriteLine("mouth is {0}", _mouth);
+            System.Console.WriteLine("nose is {0}", _nose);
+        }
+    }
+
+    class Cyborg : Person
+    {
+        private int _power;
+
+        public void Set(string __name, int __eye, int __ear, int __mouth, int __nose)
         {
             _name = __name;
-
-            //_world._defenseMachineAlerts += new GameWorld.DefenseMachineAlert(Alert);//다중 위임
-        }
-
-        public void Alert()
-        {
-            System.Console.WriteLine("[{0}] DEFCON", _name);
-        }
-
-        public void Update()
-        {
-            System.Console.WriteLine("name: {0}", _name);
+            _eye = __eye;
+            _ear = __ear;
+            _mouth = __mouth;
+            _nose = __nose;
         }
     }
 
-    class GameWorld
-    {
-        private ArrayList _objects = new ArrayList();//오브젝트 리스트
-
-        private delegate void DefenseMachineAlert();//DefenseMachine의 Alert()에 대한 위임자
-        private DefenseMachineAlert _defenseMachineAlerts;//위임 객체
-
-        public void AddBot(DefenseMachine __bot)
-        {
-            _objects.Add(__bot);
-            _defenseMachineAlerts += new DefenseMachineAlert(__bot.Alert);
-        }
-
-        public void Update()
-        {
-            int loopCount = _objects.Count;
-            for (int i = 0; i < loopCount; i++)
-            {
-                ((DefenseMachine)_objects[i]).Update();
-            }
-
-            Random rnd = new Random();
-            int ret = rnd.Next(100);
-            if (80 < ret)
-            {
-                if (null != _defenseMachineAlerts)
-                {
-                    System.Console.WriteLine("observer count: {0}"
-                        , _defenseMachineAlerts.GetInvocationList().Length
-                        );
-                    _defenseMachineAlerts();//위임 함수 실행
-                    //등록된 DefenseMachine.Alert()를 실행
-                }
-            }
-        }
-    }
     class Core
     {
-        [STAThread]
         static void Main(string[] args)
         {
-            GameWorld world = new GameWorld();
+            Cyborg smith = new Cyborg();
+            smith.Set("Smith", 0, 10, 15, 7);
+            //smith._power = 100;
 
-            DefenseMachine bot1 = new DefenseMachine("bot1");
-            DefenseMachine bot2 = new DefenseMachine("bot2");
-            DefenseMachine bot3 = new DefenseMachine("bot3");
-
-            world.AddBot(bot1);
-            world.AddBot(bot2);
-            world.AddBot(bot3);
-
-            bool loop = true;
-            while (loop)
-            {
-                Thread.Sleep(1000);
-                System.Console.WriteLine("=== GameWorld Start ===");
-                world.Update();
-            }
+            smith.Print();
         }
     }
 }
