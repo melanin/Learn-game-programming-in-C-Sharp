@@ -7,30 +7,40 @@ using System.IO;
 
 namespace BasedLearning
 {
-    class Data
-    {
-        public int a;
-        public int b;
-    }
-
     class Core
     {
-        static void Calc(Data __obj)
+        public delegate int Print(string __message);
+
+        public static int SpeakA(string __message)
         {
-            __obj.a = 100;
-            __obj.b = 200;
+            System.Console.Write("Aaaaaaaaaaaaa ");
+            System.Console.WriteLine(__message);
+            return 0;
+        }
+        public static int SpeakB(string __message)
+        {
+            System.Console.Write("Bbbbbbbbbbbbb ");
+            System.Console.WriteLine(__message);
+            return 1;
         }
 
         static void Main(string[] args)
         {
-            Data obj = new Data();
-            obj.a = 10;
-            obj.b = 20;
+            Print a = new Print(SpeakA);
+            Print b = new Print(SpeakB);
+            Print c;
 
-            System.Console.WriteLine("초기값 {0}, {1}", obj.a, obj.b);
+            Random rnd = new Random();
+            if (rnd.Next(100) > 50)
+            {
+                c = a;
+            }
+            else
+            {
+                c = b;
+            }
 
-            Calc(obj);
-            System.Console.WriteLine("결과 {0}, {1}", obj.a, obj.b);//기본 타입을 제외한 타입은 reference로 전달
+            c("Hi!!");
         }
     }
 }
