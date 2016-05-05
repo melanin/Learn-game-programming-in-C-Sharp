@@ -2,43 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using System.Threading;
 
 namespace BasedLearning
 {
     class Animal
     {
+        protected string _name;
+
+        public void SetName(string __name)
+        {
+            _name = __name;
+        }
+
+        public virtual void Eat()//virtual 가상함수
+        {
+            System.Console.WriteLine("[{0}] eat the rice", _name);
+        }
     }
 
     class Person : Animal
     {
-        //private string _name;//private는 상속받은 클래스도 접근 불가
-        protected string _name;//protected는 상속받은 클래스만 접근 가능
-        protected int _eye;
-        protected int _ear;
-        protected int _mouth;
-        protected int _nose;
-
-        public void Print()
-        {
-            System.Console.WriteLine("name is {0}", _name);
-            System.Console.WriteLine("eye is {0}", _eye);
-            System.Console.WriteLine("ear is {0}", _ear);
-            System.Console.WriteLine("mouth is {0}", _mouth);
-            System.Console.WriteLine("nose is {0}", _nose);
-        }
     }
 
     class Cyborg : Person
     {
-        private int _power;
-
-        public void Set(string __name, int __eye, int __ear, int __mouth, int __nose)
+        public override void Eat()//가상함수 override
         {
-            _name = __name;
-            _eye = __eye;
-            _ear = __ear;
-            _mouth = __mouth;
-            _nose = __nose;
+            base.Eat();//base 클래스 함수 호출
+            System.Console.WriteLine("[{0}] eat the spark", _name);
         }
     }
 
@@ -46,11 +39,40 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            Cyborg smith = new Cyborg();
-            smith.Set("Smith", 0, 10, 15, 7);
-            //smith._power = 100;
+            ArrayList list = new ArrayList();
 
-            smith.Print();
+            Person jack = new Person();
+            jack.SetName("Jack");
+
+            Person kelly = new Person();
+            kelly.SetName("Kelly");
+
+            Person kim = new Person();
+            kim.SetName("Kim");
+
+            Cyborg smith = new Cyborg();
+            smith.SetName("Smith");
+
+            list.Add(jack);
+            list.Add(kelly);
+            list.Add(kim);
+            list.Add(smith);
+
+            bool loop = true;
+            while (loop)
+            {
+                Thread.Sleep(1000);
+
+                //for (int i = 0; i < list.Count; i++)
+                //{
+                //    ((Animal)list[i]).Eat();
+                //}
+
+                foreach (Animal character in list)
+                {
+                    character.Eat();
+                }
+            }
         }
     }
 }
