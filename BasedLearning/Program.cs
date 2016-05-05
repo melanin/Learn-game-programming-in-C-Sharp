@@ -11,14 +11,13 @@ namespace BasedLearning
 {
     class DefenseMachine
     {
-        public string _name;
-        public GameWorld _world;
+        private string _name;
 
-        public DefenseMachine(GameWorld __world)
+        public DefenseMachine(string __name)
         {
-            _world = __world;
+            _name = __name;
 
-            _world._defenseMachineAlerts += new GameWorld.DefenseMachineAlert(Alert);//다중 위임
+            //_world._defenseMachineAlerts += new GameWorld.DefenseMachineAlert(Alert);//다중 위임
         }
 
         public void Alert()
@@ -34,10 +33,16 @@ namespace BasedLearning
 
     class GameWorld
     {
-        public ArrayList _objects = new ArrayList();//오브젝트 리스트
+        private ArrayList _objects = new ArrayList();//오브젝트 리스트
 
-        public delegate void DefenseMachineAlert();//DefenseMachine의 Alert()에 대한 위임자
-        public DefenseMachineAlert _defenseMachineAlerts;//위임 객체
+        private delegate void DefenseMachineAlert();//DefenseMachine의 Alert()에 대한 위임자
+        private DefenseMachineAlert _defenseMachineAlerts;//위임 객체
+
+        public void AddBot(DefenseMachine __bot)
+        {
+            _objects.Add(__bot);
+            _defenseMachineAlerts += new DefenseMachineAlert(__bot.Alert);
+        }
 
         public void Update()
         {
@@ -69,18 +74,13 @@ namespace BasedLearning
         {
             GameWorld world = new GameWorld();
 
-            DefenseMachine bot1 = new DefenseMachine(world);
-            bot1._name = "bot1";
+            DefenseMachine bot1 = new DefenseMachine("bot1");
+            DefenseMachine bot2 = new DefenseMachine("bot2");
+            DefenseMachine bot3 = new DefenseMachine("bot3");
 
-            DefenseMachine bot2 = new DefenseMachine(world);
-            bot2._name = "bot2";
-
-            DefenseMachine bot3 = new DefenseMachine(world);
-            bot3._name = "bot3";
-
-            world._objects.Add(bot1);
-            world._objects.Add(bot2);
-            world._objects.Add(bot3);
+            world.AddBot(bot1);
+            world.AddBot(bot2);
+            world.AddBot(bot3);
 
             bool loop = true;
             while (loop)
