@@ -7,31 +7,26 @@ using System.Threading;
 
 namespace BasedLearning
 {
-    class Animal
+    abstract class Animal
     {
-        protected string _name;
-
-        public void SetName(string __name)
-        {
-            _name = __name;
-        }
-
-        public virtual void Eat()//virtual 가상함수
-        {
-            System.Console.WriteLine("[{0}] eat the rice", _name);
-        }
+        abstract public void Eat();//abstract 추상 메서드는 내용을 구현하지 않고 파생클래스에 구현을 넘길 수 있음
     }
 
     class Person : Animal
     {
+        public override void Eat()//상속받은 Animal의 추상 메서드 Animal.Eat()을 정의
+        {
+            //throw new NotImplementedException();
+            System.Console.WriteLine("eat the rice");
+        }
     }
 
     class Cyborg : Person
     {
-        public override void Eat()//가상함수 override
+        public override void Eat()
         {
-            base.Eat();//base 클래스 함수 호출
-            System.Console.WriteLine("[{0}] eat the spark", _name);
+            //base.Eat();
+            System.Console.WriteLine("eat the spark");
         }
     }
 
@@ -39,40 +34,13 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            ArrayList list = new ArrayList();
+            //Animal obj = new Animal();//abstract 추상 클래스는 객체 생성 불가
 
-            Person jack = new Person();
-            jack.SetName("Jack");
+            Person man = new Person();
+            man.Eat();
 
-            Person kelly = new Person();
-            kelly.SetName("Kelly");
-
-            Person kim = new Person();
-            kim.SetName("Kim");
-
-            Cyborg smith = new Cyborg();
-            smith.SetName("Smith");
-
-            list.Add(jack);
-            list.Add(kelly);
-            list.Add(kim);
-            list.Add(smith);
-
-            bool loop = true;
-            while (loop)
-            {
-                Thread.Sleep(1000);
-
-                //for (int i = 0; i < list.Count; i++)
-                //{
-                //    ((Animal)list[i]).Eat();
-                //}
-
-                foreach (Animal character in list)
-                {
-                    character.Eat();
-                }
-            }
+            Cyborg bot = new Cyborg();
+            bot.Eat();
         }
     }
 }
