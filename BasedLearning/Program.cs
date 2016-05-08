@@ -3,44 +3,100 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
-using System.Threading;
 
 namespace BasedLearning
 {
-    abstract class Animal
+    interface ISort
     {
-        abstract public void Eat();//abstract 추상 메서드는 내용을 구현하지 않고 파생클래스에 구현을 넘길 수 있음
+        int GetY();
     }
 
-    class Person : Animal
+    class GameObject : ISort
     {
-        public override void Eat()//상속받은 Animal의 추상 메서드 Animal.Eat()을 정의
+        public int x;
+        public int y;
+
+        public int GetY()//인터페이스 ISort의 GetY() 구현
         {
-            //throw new NotImplementedException();
-            System.Console.WriteLine("eat the rice");
+            return y;
         }
-    }
 
-    class Cyborg : Person
-    {
-        public override void Eat()
+        public void Print()
         {
-            //base.Eat();
-            System.Console.WriteLine("eat the spark");
+            System.Console.WriteLine("===");
+            System.Console.WriteLine("X = {0}", x);
+            System.Console.WriteLine("Y = {0}", y);
+            System.Console.WriteLine("===");
         }
     }
 
     class Core
     {
+        public static void SortGameObject(ArrayList __list)
+        {
+            int min;
+            int minIndex;
+            object temp;
+
+            for (int i = 0; i < __list.Count - 1; i++)
+            {
+                minIndex = i;
+                min = ((ISort)__list[i]).GetY();
+                temp = __list[i];
+
+                for (int k = i + 1; k < __list.Count; k++)
+                {
+                    if (min > ((ISort)__list[k]).GetY())
+                    {
+                        min = ((ISort)__list[k]).GetY();
+                        minIndex = k;
+                    }
+                }
+
+                temp = __list[minIndex];
+                __list[minIndex] = __list[i];
+                __list[i] = temp;
+            }
+        }
+
         static void Main(string[] args)
         {
-            //Animal obj = new Animal();//abstract 추상 클래스는 객체 생성 불가
+            Random rnd = new Random();
+            ArrayList list = new ArrayList();
 
-            Person man = new Person();
-            man.Eat();
+            GameObject obj1 = new GameObject();
+            obj1.x = rnd.Next(100);
+            obj1.y = rnd.Next(100);
 
-            Cyborg bot = new Cyborg();
-            bot.Eat();
+            GameObject obj2 = new GameObject();
+            obj2.x = rnd.Next(100);
+            obj2.y = rnd.Next(100);
+
+            GameObject obj3 = new GameObject();
+            obj3.x = rnd.Next(100);
+            obj3.y = rnd.Next(100);
+
+            GameObject obj4 = new GameObject();
+            obj4.x = rnd.Next(100);
+            obj4.y = rnd.Next(100);
+
+            GameObject obj5 = new GameObject();
+            obj5.x = rnd.Next(100);
+            obj5.y = rnd.Next(100);
+
+            list.Add(obj1);
+            list.Add(obj2);
+            list.Add(obj3);
+            list.Add(obj4);
+            list.Add(obj5);
+
+            SortGameObject(list);
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                GameObject obj = (GameObject)list[i];
+                obj.Print();
+            }
         }
     }
 }
