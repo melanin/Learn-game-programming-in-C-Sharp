@@ -40,31 +40,12 @@ namespace BasedLearning
             GameObject obj3 = new GameObject("Kelly");
             GameObject obj4 = new GameObject("Kim");
 
-            GameObject[] list = new GameObject[4];
-            list[0] = obj1;
-            list[1] = obj2;
-            list[2] = obj3;
-            list[3] = obj4;
+            GameObject[] list = new GameObject[4] { obj1, obj2, obj3, obj4 };
 
             bool loop = true;
             while (loop)
             {
                 Thread.Sleep(1000);
-
-                //obj1.Update();
-                //obj2.Update();
-                //obj3.Update();
-                //obj4.Update();
-
-                //obj1.Render();
-                //obj2.Render();
-                //obj3.Render();
-                //obj4.Render();
-
-                //obj1.PrintName();
-                //obj2.PrintName();
-                //obj3.PrintName();
-                //obj4.PrintName();
 
                 for (int i = 0; i < list.Length; i++)
                 {
