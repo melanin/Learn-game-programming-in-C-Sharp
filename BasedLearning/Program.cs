@@ -2,57 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
 namespace BasedLearning
 {
-    class GameObject
-    {
-        private string _name;
-
-        public GameObject(string __name)
-        {
-            _name = __name;
-        }
-
-        public void PrintName()
-        {
-            System.Console.WriteLine("Name is {0}", _name);
-        }
-
-        public void Update()
-        {
-            System.Console.WriteLine("{0} is Running", _name);
-        }
-
-        public void Render()
-        {
-            System.Console.WriteLine("{0} is Draw", _name);
-        }
-    }
-
     class Core
     {
         static void Main(string[] args)
         {
-            GameObject obj1 = new GameObject("Smith");
-            GameObject obj2 = new GameObject("Jack");
-            GameObject obj3 = new GameObject("Kelly");
-            GameObject obj4 = new GameObject("Kim");
+            int[,] twoMap = new int[5, 10];
 
-            GameObject[] list = new GameObject[4] { obj1, obj2, obj3, obj4 };
-
-            bool loop = true;
-            while (loop)
+            for (int y = 0; y < 5; y++)
             {
-                Thread.Sleep(1000);
-
-                for (int i = 0; i < list.Length; i++)
+                for (int x = 0; x < 10; x++)
                 {
-                    list[i].Update();
-                    list[i].Render();
-                    list[i].PrintName();
+                    System.Console.Write(twoMap[y, x]);
                 }
+                System.Console.WriteLine();
+            }
+
+            System.Console.WriteLine();
+
+            int[,] twoMap2 = new int[5, 10]
+                {
+                    { 0,0,0,0,0,0,0,0,0,0 },
+                    { 0,1,1,1,1,1,1,1,1,0 },
+                    { 0,1,1,1,1,1,1,1,1,0 },
+                    { 0,1,1,1,1,1,1,1,1,0 },
+                    { 0,0,0,0,0,0,0,0,0,0 }
+                };
+            for (int y = 0; y < twoMap2.GetLength(0); y++)
+            {
+                for (int x = 0; x < twoMap2.GetLength(1); x++)
+                {
+                    System.Console.Write(twoMap2[y, x]);
+                }
+                System.Console.WriteLine();
             }
         }
     }
