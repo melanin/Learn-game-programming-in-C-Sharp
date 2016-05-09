@@ -9,32 +9,19 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            int[,] twoMap = new int[5, 10];
+            int[][] sawToothArray = new int[5][];
 
-            for (int y = 0; y < 5; y++)
+            sawToothArray[0] = new int[10];
+            sawToothArray[1] = new int[5];
+            sawToothArray[2] = new int[8];
+            sawToothArray[3] = new int[2];
+            sawToothArray[4] = new int[7];
+
+            for (int i = 0; i < sawToothArray.GetLength(0); i++)
             {
-                for (int x = 0; x < 10; x++)
+                for (int k = 0; k < sawToothArray[i].Length; k++)
                 {
-                    System.Console.Write(twoMap[y, x]);
-                }
-                System.Console.WriteLine();
-            }
-
-            System.Console.WriteLine();
-
-            int[,] twoMap2 = new int[5, 10]
-                {
-                    { 0,0,0,0,0,0,0,0,0,0 },
-                    { 0,1,1,1,1,1,1,1,1,0 },
-                    { 0,1,1,1,1,1,1,1,1,0 },
-                    { 0,1,1,1,1,1,1,1,1,0 },
-                    { 0,0,0,0,0,0,0,0,0,0 }
-                };
-            for (int y = 0; y < twoMap2.GetLength(0); y++)
-            {
-                for (int x = 0; x < twoMap2.GetLength(1); x++)
-                {
-                    System.Console.Write(twoMap2[y, x]);
+                    System.Console.Write("*", sawToothArray[i][k]);
                 }
                 System.Console.WriteLine();
             }
