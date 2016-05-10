@@ -18,20 +18,10 @@ namespace BasedLearning
             }
             set
             {
+                System.Console.Write("changed: {0}", data1);
                 data1 = value;
+                System.Console.WriteLine(" >> {0}", data1);
             }
-        }
-
-        public int Data2
-        {
-            get
-            {
-                return data2;
-            }
-            //set
-            //{
-            //    data2 = value;
-            //}
         }
     }
 
@@ -40,13 +30,10 @@ namespace BasedLearning
         static void Main(string[] args)
         {
             DataMan dataMan = new DataMan();
-            System.Console.WriteLine("before: {0}", dataMan.Data1);
+            //System.Console.WriteLine("before: {0}", dataMan.Data1);
 
             dataMan.Data1 = 10;
-            System.Console.WriteLine("after: {0}", dataMan.Data1);
-
-            System.Console.WriteLine("DATA2: {0}", dataMan.Data2);
-            //dataMan.Data2 = 20;//set프로퍼티가 설정되지 않아 읽기 전용
+            //System.Console.WriteLine("after: {0}", dataMan.Data1);
         }
     }
 }
