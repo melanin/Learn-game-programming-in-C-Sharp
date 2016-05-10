@@ -2,25 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace BasedLearning
 {
-    class DataMan
+    class SimpleIntVector
     {
-        private int data1;
-        private int data2;
+        private ArrayList data = new ArrayList();
 
-        public int Data1
+        public void push_back(int __element)
+        {
+            data.Add(__element);
+        }
+
+        public int GetData(int __index)
+        {
+            return (int)data[__index];
+        }
+
+        //인덱서
+        public int this[int __index]
         {
             get
             {
-                return data1;
+                return (int)data[__index];
             }
             set
             {
-                System.Console.Write("changed: {0}", data1);
-                data1 = value;
-                System.Console.WriteLine(" >> {0}", data1);
+                if (__index >= data.Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                data[__index] = value;
             }
         }
     }
@@ -29,11 +42,19 @@ namespace BasedLearning
     {
         static void Main(string[] args)
         {
-            DataMan dataMan = new DataMan();
-            //System.Console.WriteLine("before: {0}", dataMan.Data1);
+            SimpleIntVector vector = new SimpleIntVector();
 
-            dataMan.Data1 = 10;
-            //System.Console.WriteLine("after: {0}", dataMan.Data1);
+            vector.push_back(1);
+            vector.push_back(2);
+            vector.push_back(5);
+            vector.push_back(10);
+
+            System.Console.WriteLine("{0} ", vector.GetData(2));
+
+            vector[2] = 20;
+            System.Console.WriteLine("{0} ", vector[2]);
+
+            //vector[10] = 2;//IndexOutOfRangeException.. 할당되지 않은 위치에 값을 넣으면 exception 발생하도록 설정되어 있음
         }
     }
 }
