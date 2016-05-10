@@ -5,26 +5,48 @@ using System.Text;
 
 namespace BasedLearning
 {
+    class DataMan
+    {
+        private int data1;
+        private int data2;
+
+        public int Data1
+        {
+            get
+            {
+                return data1;
+            }
+            set
+            {
+                data1 = value;
+            }
+        }
+
+        public int Data2
+        {
+            get
+            {
+                return data2;
+            }
+            //set
+            //{
+            //    data2 = value;
+            //}
+        }
+    }
+
     class Core
     {
         static void Main(string[] args)
         {
-            int[][] sawToothArray = new int[5][];
+            DataMan dataMan = new DataMan();
+            System.Console.WriteLine("before: {0}", dataMan.Data1);
 
-            sawToothArray[0] = new int[10];
-            sawToothArray[1] = new int[5];
-            sawToothArray[2] = new int[8];
-            sawToothArray[3] = new int[2];
-            sawToothArray[4] = new int[7];
+            dataMan.Data1 = 10;
+            System.Console.WriteLine("after: {0}", dataMan.Data1);
 
-            for (int i = 0; i < sawToothArray.GetLength(0); i++)
-            {
-                for (int k = 0; k < sawToothArray[i].Length; k++)
-                {
-                    System.Console.Write("*", sawToothArray[i][k]);
-                }
-                System.Console.WriteLine();
-            }
+            System.Console.WriteLine("DATA2: {0}", dataMan.Data2);
+            //dataMan.Data2 = 20;//set프로퍼티가 설정되지 않아 읽기 전용
         }
     }
 }
