@@ -6,61 +6,64 @@ using System.Collections;
 
 namespace BasedLearning
 {
-    class GameUser
+    struct Vec
     {
-        public string name;
-        public int energy;
+        private float x;
+        private float y;
+
+        public Vec(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public float X
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                y = value;
+            }
+        }
+
+        public float Y
+        {
+            get
+            {
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
+        }       
+
+        public void PrintAll()
+        {
+            System.Console.WriteLine("X = {0}, Y = {1}", x, y);
+        }
+
+        public static Vec operator -(Vec lhs, Vec rhs)
+        {
+            return new Vec(lhs.X - rhs.X, lhs.Y - rhs.Y);
+        }
     }
 
     class Core
     {
         static void Main(string[] args)
         {
-            Hashtable table = new Hashtable();//Hashtable
+            Vec a = new Vec(10, 10);
+            a.PrintAll();
 
-            GameUser user1 = new GameUser();
-            user1.name = "c# USER";
-            user1.energy = 100;
+            Vec b = new Vec(100, 100);
+            b.PrintAll();
 
-            GameUser user2 = new GameUser();
-            user2.name = "HONG";
-            user2.energy = 60;
-
-            GameUser user3 = new GameUser();
-            user3.name = "LIM";
-            user3.energy = 150;
-
-            table.Add(user1.name.GetHashCode(), user1);//Object::GetHashCode()사용
-            table.Add(user2.name.GetHashCode(), user2);
-            table.Add(user3.name.GetHashCode(), user3);
-
-            GameUser player = (GameUser)table["c# USER".GetHashCode()];
-            if (null != player)
-            {
-                System.Console.WriteLine(player.name);
-                System.Console.WriteLine(player.energy);
-            }
-            else
-            {
-                System.Console.WriteLine("Can not find player!!");
-            }
-
-            System.Console.WriteLine();
-            System.Console.WriteLine("======== KEY LIST");
-            
-            foreach (int key in table.Keys)//ICollection타입의 Keys
-            {
-                System.Console.WriteLine(key);
-            }
-
-            System.Console.WriteLine();
-            System.Console.WriteLine("======== OBJ LIST");
-
-            foreach (object obj in table.Values)//ICollection타입의 Values
-            {
-                GameUser item = (GameUser)obj;
-                System.Console.WriteLine("[{0}], {1}, {2}", obj, item.name, item.energy);
-            }
+            Vec c = b - a;
+            c.PrintAll();
         }
     }
 }
