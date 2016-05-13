@@ -8,28 +8,49 @@ using System.Reflection;//for MethodInfo
 namespace BasedLearning
 {
     class Core
-    {
+    {   
+        class CustomMethod : Attribute
+        {
+            private string _methodname;
+
+            public CustomMethod(string __name)
+            {
+                _methodname = __name;
+            }
+
+            public string GetName()
+            {
+                return _methodname;
+            }
+        }
+
         class Player
         {
+            [CustomMethod("Punch")]
             public void Punch()
             {
-                System.Console.WriteLine("puhch");
+                System.Console.WriteLine("Punch!");
             }
+
+            [CustomMethod("Kick")]
             public void Kick()
             {
-                System.Console.WriteLine("kick");
+                System.Console.WriteLine("Kick!");
             }
+
+            [CustomMethod("Finger")]
             public void Finger()
             {
-                System.Console.WriteLine("finger");
+                System.Console.WriteLine("Finger!");
             }
         }
 
         class PlayerEx : Player
         {
+            [CustomMethod("Head")]
             public void Head()
             {
-                System.Console.WriteLine("head");
+                System.Console.WriteLine("Head!");
             }
         }
 
@@ -39,30 +60,31 @@ namespace BasedLearning
             PlayerEx playerEx = new PlayerEx();
 
             Type type = player.GetType();
+
             foreach (MethodInfo info in type.GetMethods())
             {
-                System.Console.WriteLine(info.Name);
+                foreach (Attribute attr in info.GetCustomAttributes(true))
+                {
+                    if (attr is CustomMethod)
+                    {
+                        System.Console.WriteLine(info.Name);
+                    }
+                }
             }
-            MethodInfo[] infos = type.GetMethods();
-            System.Console.WriteLine("COUNT: {0}", infos.GetLength(0));
-            System.Console.WriteLine();
 
-            type = player.GetType();
-            foreach (MethodInfo info in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
-            {
-                System.Console.WriteLine(info.Name);
-            }
-            infos = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-            System.Console.WriteLine("COUNT: {0}", infos.GetLength(0));
             System.Console.WriteLine();
 
             type = playerEx.GetType();
-            foreach (MethodInfo info in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+            foreach (MethodInfo info in type.GetMethods())
             {
-                System.Console.WriteLine(info.Name);
+                foreach (Attribute attr in info.GetCustomAttributes(true))
+                {
+                    if (attr is CustomMethod)
+                    {
+                        System.Console.WriteLine(info.Name);
+                    }
+                }
             }
-            infos = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-            System.Console.WriteLine("COUNT: {0}", infos.GetLength(0));
         }
     }
 }
