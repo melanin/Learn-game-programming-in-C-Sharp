@@ -8,83 +8,80 @@ using System.Reflection;//for MethodInfo
 namespace BasedLearning
 {
     class Core
-    {   
-        class CustomMethod : Attribute
+    {
+        class LoadException : Exception
         {
-            private string _methodname;
+            public string _message;
 
-            public CustomMethod(string __name)
+            public LoadException(string __message)
             {
-                _methodname = __name;
-            }
-
-            public string GetName()
-            {
-                return _methodname;
+                _message = __message;
             }
         }
 
-        class Player
+        class Engine
         {
-            [CustomMethod("Punch")]
-            public void Punch()
+            public Engine()
             {
-                System.Console.WriteLine("Punch!");
             }
 
-            [CustomMethod("Kick")]
-            public void Kick()
+            public bool LoadResource()
             {
-                System.Console.WriteLine("Kick!");
+                return true;
             }
 
-            [CustomMethod("Finger")]
-            public void Finger()
+            public bool LoadSounds()
             {
-                System.Console.WriteLine("Finger!");
+                return true;
             }
-        }
 
-        class PlayerEx : Player
-        {
-            [CustomMethod("Head")]
-            public void Head()
+            public bool LoadGraphics()
             {
-                System.Console.WriteLine("Head!");
+                throw new LoadException("error LoadGraphics");
+                return false;
+            }
+
+            public bool LoadGameData()
+            {
+                return true;
+            }
+
+            public bool InitInput()
+            {
+                return true;
+            }
+
+            public void Update()
+            {
+            }
+
+            public void Render()
+            {
             }
         }
 
         static void Main(string[] args)
         {
-            Player player = new Player();
-            PlayerEx playerEx = new PlayerEx();
+            System.Console.WriteLine("Engine start...");
 
-            Type type = player.GetType();
+            Engine engine = new Engine();
 
-            foreach (MethodInfo info in type.GetMethods())
+            try
             {
-                foreach (Attribute attr in info.GetCustomAttributes(true))
-                {
-                    if (attr is CustomMethod)
-                    {
-                        System.Console.WriteLine(info.Name);
-                    }
-                }
+                engine.LoadResource();
+                engine.LoadSounds();
+                engine.LoadGraphics();
+                engine.LoadGameData();
+
+                engine.Update();
+                engine.Render();
+            }
+            catch (LoadException e)
+            {
+                System.Console.WriteLine(e.Message);
             }
 
-            System.Console.WriteLine();
-
-            type = playerEx.GetType();
-            foreach (MethodInfo info in type.GetMethods())
-            {
-                foreach (Attribute attr in info.GetCustomAttributes(true))
-                {
-                    if (attr is CustomMethod)
-                    {
-                        System.Console.WriteLine(info.Name);
-                    }
-                }
-            }
+            System.Console.WriteLine("Engine end...");
         }
     }
 }
