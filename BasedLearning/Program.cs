@@ -88,6 +88,9 @@ namespace BasedLearning
                 engine.Update();
                 engine.Render();
             }
+            //catch (Exception e)//상위 레벨의 Exception을 먼저 두면 컴파일 에러 발생
+            //{
+            //}
             catch (LoadException e)
             {
                 System.Console.WriteLine(e.Message);
