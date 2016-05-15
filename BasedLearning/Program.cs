@@ -19,6 +19,18 @@ namespace BasedLearning
             }
         }
 
+        class ImageException : Exception
+        {
+            public string _message;
+            public int _imageIndex;
+
+            public ImageException(string __message, int __imageIndex)
+            {
+                _message = __message;
+                _imageIndex = __imageIndex;
+            }
+        }
+
         class Engine
         {
             public Engine()
@@ -37,7 +49,7 @@ namespace BasedLearning
 
             public bool LoadGraphics()
             {
-                throw new LoadException("error LoadGraphics");
+                throw new ImageException("error LoadGraphics", 34);
                 return false;
             }
 
@@ -79,6 +91,10 @@ namespace BasedLearning
             catch (LoadException e)
             {
                 System.Console.WriteLine(e.Message);
+            }
+            catch (ImageException e)
+            {
+                System.Console.WriteLine("Err Message: " + e.Message + ", Index: " + e._imageIndex);
             }
 
             System.Console.WriteLine("Engine end...");
