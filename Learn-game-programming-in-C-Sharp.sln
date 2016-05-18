@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasedLearning", "BasedLearning\BasedLearning.csproj", "{824C2B56-130B-4F18-B714-63338D81E2AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{4D7240F1-ABAD-4337-8B4E-26B58484FB72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleApp", "SimpleApp\SimpleApp.csproj", "{A567C7A1-97E9-40B1-85F2-9B563EF6618D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{824C2B56-130B-4F18-B714-63338D81E2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{824C2B56-130B-4F18-B714-63338D81E2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{824C2B56-130B-4F18-B714-63338D81E2AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D7240F1-ABAD-4337-8B4E-26B58484FB72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D7240F1-ABAD-4337-8B4E-26B58484FB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D7240F1-ABAD-4337-8B4E-26B58484FB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D7240F1-ABAD-4337-8B4E-26B58484FB72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A567C7A1-97E9-40B1-85F2-9B563EF6618D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A567C7A1-97E9-40B1-85F2-9B563EF6618D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A567C7A1-97E9-40B1-85F2-9B563EF6618D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A567C7A1-97E9-40B1-85F2-9B563EF6618D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
