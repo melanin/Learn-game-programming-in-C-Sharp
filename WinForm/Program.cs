@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
 
 namespace WinForm
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// 해당 응용 프로그램의 주 진입점입니다.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());//메시지 루프 실행
+            MainForm form = new MainForm();
+            //Thread.Sleep(5000);
+
+            bool loop = true;
+            while (loop)
+            {
+                Thread.Sleep(30);
+                System.Windows.Forms.Application.DoEvents();
+            }
         }
     }
 }
