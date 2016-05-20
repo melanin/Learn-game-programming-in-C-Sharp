@@ -21,5 +21,18 @@ namespace Controls
         {
             MessageBox.Show("버튼 컨트롤");
         }
+
+        private void ButtonPaint(object sender, PaintEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button.Capture == true)
+            {
+                button.Image = Properties.Resources.button_down;
+            }
+            else
+            {
+                button.Image = Properties.Resources.button_normal;
+            }
+        }
     }
 }
