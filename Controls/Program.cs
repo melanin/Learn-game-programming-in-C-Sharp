@@ -20,7 +20,8 @@ namespace Controls
                 //new Form1()
                 //new LevelUp()
                 //new Windows.CheckBoxEx()
-                new Windows.CheckBoxSample2()
+                //new Windows.CheckBoxSample2()
+                new Windows.CheckBoxMediatorSample()
                 );
         }
     }

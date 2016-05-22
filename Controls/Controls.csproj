@@ -55,6 +55,12 @@
     <Compile Include="Windows\CheckBoxEx.Designer.cs">
       <DependentUpon>CheckBoxEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CheckBoxMediatorSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\CheckBoxMediatorSample.Designer.cs">
+      <DependentUpon>CheckBoxMediatorSample.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CheckBoxSample2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Windows\CheckBoxEx.resx">
       <DependentUpon>CheckBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\CheckBoxMediatorSample.resx">
+      <DependentUpon>CheckBoxMediatorSample.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\CheckBoxSample2.resx">
       <DependentUpon>CheckBoxSample2.cs</DependentUpon>
