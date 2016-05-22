@@ -49,6 +49,18 @@
     <Compile Include="Customs\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Windows\CheckBoxEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\CheckBoxEx.Designer.cs">
+      <DependentUpon>CheckBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CheckBoxSample2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\CheckBoxSample2.Designer.cs">
+      <DependentUpon>CheckBoxSample2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Windows\CheckBoxEx.resx">
+      <DependentUpon>CheckBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\CheckBoxSample2.resx">
+      <DependentUpon>CheckBoxSample2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
