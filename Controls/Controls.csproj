@@ -55,6 +55,7 @@
     <Compile Include="Windows\CheckBoxEx.Designer.cs">
       <DependentUpon>CheckBoxEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CheckBoxMediatorPattern.cs" />
     <Compile Include="Windows\CheckBoxMediatorSample.cs">
       <SubType>Form</SubType>
     </Compile>

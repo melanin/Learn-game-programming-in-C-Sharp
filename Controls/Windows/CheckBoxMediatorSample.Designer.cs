@@ -45,7 +45,7 @@
             this._checkWarrior.TabIndex = 0;
             this._checkWarrior.Text = "전사";
             this._checkWarrior.UseVisualStyleBackColor = true;
-            this._checkWarrior.CheckedChanged += new System.EventHandler(this.CheckedChangedWarrior);
+            this._checkWarrior.CheckedChanged += new System.EventHandler(this.CheckedChangedClass);
             // 
             // _checkBerserker
             // 
@@ -56,7 +56,7 @@
             this._checkBerserker.TabIndex = 1;
             this._checkBerserker.Text = "버서커";
             this._checkBerserker.UseVisualStyleBackColor = true;
-            this._checkBerserker.CheckedChanged += new System.EventHandler(this.CheckedChangedBerserker);
+            this._checkBerserker.CheckedChanged += new System.EventHandler(this.CheckedChangedClass);
             // 
             // _checkMage
             // 
@@ -67,7 +67,7 @@
             this._checkMage.TabIndex = 2;
             this._checkMage.Text = "마법사";
             this._checkMage.UseVisualStyleBackColor = true;
-            this._checkMage.CheckedChanged += new System.EventHandler(this.CheckedChangedMage);
+            this._checkMage.CheckedChanged += new System.EventHandler(this.CheckedChangedClass);
             // 
             // _checkWand
             // 
@@ -125,6 +125,7 @@
         private System.Windows.Forms.CheckBox _checkWarrior;
         private System.Windows.Forms.CheckBox _checkBerserker;
         private System.Windows.Forms.CheckBox _checkMage;
+
         private System.Windows.Forms.CheckBox _checkWand;
         private System.Windows.Forms.CheckBox _checkTwoHandSword;
         private System.Windows.Forms.CheckBox _checkOneHandSword;

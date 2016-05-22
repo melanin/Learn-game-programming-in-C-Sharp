@@ -12,54 +12,20 @@ namespace Controls.Windows
 {
     public partial class CheckBoxMediatorSample : Form
     {
+        CheckBoxMediatorPattern mediator = new CheckBoxMediatorPattern();
+
         public CheckBoxMediatorSample()
         {
             InitializeComponent();
+
+            mediator.AddClass(_checkWarrior, _checkBerserker, _checkMage);
+            mediator.AddWeapon(_checkOneHandSword, _checkTwoHandSword, _checkWand);
         }
 
-        private void CheckedChangedWarrior(object sender, EventArgs e)
+        private void CheckedChangedClass(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
-
-            if (checkBox.Checked)
-            {
-                _checkBerserker.Checked = false;
-                _checkMage.Checked = false;
-
-                _checkOneHandSword.Checked = true;
-                _checkTwoHandSword.Checked = false;
-                _checkWand.Checked = false;
-            }
-        }
-
-        private void CheckedChangedBerserker(object sender, EventArgs e)
-        {
-            CheckBox checkBox = (CheckBox)sender;
-
-            if (checkBox.Checked)
-            {
-                _checkWarrior.Checked = false;
-                _checkMage.Checked = false;
-
-                _checkOneHandSword.Checked = true;
-                _checkTwoHandSword.Checked = true;
-                _checkWand.Checked = false;
-            }
-        }
-
-        private void CheckedChangedMage(object sender, EventArgs e)
-        {
-            CheckBox checkBox = (CheckBox)sender;
-
-            if (checkBox.Checked)
-            {
-                _checkWarrior.Checked = false;
-                _checkBerserker.Checked = false;
-
-                _checkOneHandSword.Checked = false;
-                _checkTwoHandSword.Checked = false;
-                _checkWand.Checked = true;
-            }
+            mediator.ChangeAction(checkBox);
         }
     }
 }
