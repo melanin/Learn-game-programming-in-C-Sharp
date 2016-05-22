@@ -23,6 +23,17 @@ namespace Controls.Customs
             _normal = new Bitmap(global::Controls.Properties.Resources.button_normal);
             _pushed = new Bitmap(global::Controls.Properties.Resources.button_down);
         }
+        public CustomButton(Bitmap __normalImage, Bitmap __pushImage)
+        {
+            FlatStyle = FlatStyle.Flat;
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.Selectable, false);//포커스 삭제
+            Text = "";
+
+            _normal = new Bitmap(__normalImage);
+            _pushed = new Bitmap(__pushImage);
+        }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
