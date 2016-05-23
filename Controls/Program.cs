@@ -21,7 +21,8 @@ namespace Controls
                 //new LevelUp()
                 //new Windows.CheckBoxEx()
                 //new Windows.CheckBoxSample2()
-                new Windows.CheckBoxMediatorSample()
+                //new Windows.CheckBoxMediatorSample()
+                new Windows.RadioButtonSample()
                 );
         }
     }

@@ -82,6 +82,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\RadioButtonSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\RadioButtonSample.Designer.cs">
+      <DependentUpon>RadioButtonSample.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows\CheckBoxEx.resx">
       <DependentUpon>CheckBoxEx.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +112,9 @@
     </Compile>
     <EmbeddedResource Include="Windows\LevelUp.resx">
       <DependentUpon>LevelUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\RadioButtonSample.resx">
+      <DependentUpon>RadioButtonSample.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
